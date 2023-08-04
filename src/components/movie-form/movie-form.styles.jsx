@@ -5,7 +5,7 @@ export const MovieFormContainer = styled.div`
 	
 `;
 
-export const Form = styled.section`
+export const Form = styled.form`
 	display: flex;
     justify-content: center;
 	gap: 0.5em;

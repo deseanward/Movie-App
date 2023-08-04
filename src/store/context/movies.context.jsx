@@ -5,7 +5,7 @@ import { getMovie } from '../../api/movies.api';
 
 export const MovieContext = createContext({
 	setSearchTerm: () => {},
-	movie: {},
+	movie: null,
 	dispatch: () => {},
 });
 
@@ -15,8 +15,11 @@ export const MovieProvider = ({ children }) => {
 
 	const [movie, dispatch] = useReducer(movieReducer, null);
 
+	// The API key
+	const apiKey = process.env.REACT_APP_MOVIE_API_KEY;
+
 	// Complete url with searchTerm
-	const url = `https://www.omdbapi.com/?apikey=98e3fb1f&t=${searchTerm}`;
+	const url = `https://www.omdbapi.com/?apikey=${apiKey}&t=${searchTerm}`;
 
 	const values = { setSearchTerm, movie, dispatch };
 

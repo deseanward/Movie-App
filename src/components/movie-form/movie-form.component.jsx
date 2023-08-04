@@ -23,15 +23,15 @@ const MovieForm = () => {
 
 	return (
 		<MovieFormContainer>
-			<Form>
+			<Form onSubmit={handleSubmit}>
 				<input
 					type='text'
 					name='searchTerm'
 					onChange={handleChange}
 					value={formData.searchTerm}
 				/>
-				<input type='submit' value='submit' onClick={handleSubmit} />
-            </Form>
+				<input type='submit' value='submit' />
+			</Form>
 		</MovieFormContainer>
 	);
 };
