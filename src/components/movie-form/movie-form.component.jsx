@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { MovieContext } from '../../store/context/movies.context';
-import { MovieFormContainer, Form } from './movie-form.styles';
+import { MovieFormContainer, Form, Button, Input } from './movie-form.styles';
 
 const MovieForm = () => {
 	const { setSearchTerm } = useContext(MovieContext);
@@ -24,13 +24,13 @@ const MovieForm = () => {
 	return (
 		<MovieFormContainer>
 			<Form onSubmit={handleSubmit}>
-				<input
+				<Input
 					type='text'
 					name='searchTerm'
 					onChange={handleChange}
 					value={formData.searchTerm}
 				/>
-				<input type='submit' value='submit' />
+				<Button type='submit' value='Submit' />
 			</Form>
 		</MovieFormContainer>
 	);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 
 import { MovieContext } from '../../store/context/movies.context';
-import { MovieDisplayContainer } from './movie-display.styles';
+import { Image, MovieDisplayContainer, Title } from './movie-display.styles';
 
 const MovieDisplay = () => {
 	const { movie } = useContext(MovieContext);
@@ -22,18 +22,18 @@ const MovieDisplay = () => {
 	const loaded = () => {
 		return (
 			<MovieDisplayContainer>
-				<h1>{myMovie.Title}</h1>
+				<Title>{myMovie.Title}</Title>
 				<h2>{myMovie.Genre}</h2>
-				<hr />
-				<img src={myMovie.Poster} alt={myMovie.Title} />
-				<h2>{myMovie.Year}</h2>
+				<hr className='mb-4' />
+				<Image src={myMovie.Poster} alt={myMovie.Title} />
+				<h2 className='text-2xl font-bold'>{myMovie.Year}</h2>
 			</MovieDisplayContainer>
 		);
 	};
 
 	// If the movie is still loading
 	const loading = () => {
-		return <h1>No Movie to Display</h1>;
+		return <Title>No Movie to Display</Title>;
 	};
 
 	return myMovie ? loaded() : loading();
