@@ -10,20 +10,22 @@ export const MovieContext = createContext({
 });
 
 export const MovieProvider = ({ children }) => {
-    // State to hold the search term from the form input
+	// State to hold the search term from the form input
 	const [searchTerm, setSearchTerm] = useState('godfather');
 
 	const [movie, dispatch] = useReducer(movieReducer, null);
 
+	// Complete url with searchTerm
 	const url = `https://www.omdbapi.com/?apikey=98e3fb1f&t=${searchTerm}`;
 
 	const values = { setSearchTerm, movie, dispatch };
 
+	// Call to the API to retrieve a movie
 	useEffect(() => {
 		const getTheMovie = async () => {
 			try {
-                const theMovie = await getMovie(url);
-                
+				const theMovie = await getMovie(url);
+
 				dispatch({ type: 'GET_MOVIE', payload: theMovie });
 			} catch (error) {
 				console.log('Error getting movie: ', error);
@@ -34,8 +36,6 @@ export const MovieProvider = ({ children }) => {
 	}, [searchTerm]);
 
 	return (
-		<MovieContext.Provider value={values}>
-			{children}
-		</MovieContext.Provider>
+		<MovieContext.Provider value={values}>{children}</MovieContext.Provider>
 	);
 };
