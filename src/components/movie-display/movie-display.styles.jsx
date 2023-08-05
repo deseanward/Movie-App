@@ -22,7 +22,7 @@ export const MovieTitleBG = tw.section`
     absolute top-0
     flex flex-col
     text-[8rem] text-gray-700 font-black
-    opacity-[0.6]
+    
 
 `;
 
