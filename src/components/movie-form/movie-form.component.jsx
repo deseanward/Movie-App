@@ -14,6 +14,10 @@ const MovieForm = () => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
 
+	const handleKeyDown = e => {
+		console.log(e);
+	};
+
 	const handleSubmit = e => {
 		e.preventDefault();
 		setFormData(defaultFormData);
@@ -28,6 +32,7 @@ const MovieForm = () => {
 					type='text'
 					name='searchTerm'
 					onChange={handleChange}
+					onKeydown={handleKeyDown}
 					value={formData.searchTerm}
 				/>
 				<Button type='submit' value='Submit' />

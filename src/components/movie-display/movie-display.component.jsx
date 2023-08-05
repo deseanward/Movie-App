@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 
 import { MovieContext } from '../../store/context/movies.context';
-import { Image, MovieDisplayContainer, Title } from './movie-display.styles';
+import {
+	Image,
+	MovieDisplayBG,
+	MovieTitleBG,
+	MovieDisplayContainer,
+	Title,
+} from './movie-display.styles';
 
 const MovieDisplay = () => {
 	const { movie } = useContext(MovieContext);
@@ -21,12 +27,21 @@ const MovieDisplay = () => {
 	// If the movie has loaded
 	const loaded = () => {
 		return (
-			<MovieDisplayContainer>
-				<Title>{myMovie.Title}</Title>
-				<h2>{myMovie.Genre}</h2>
-				<hr className='mb-4' />
-				<Image src={myMovie.Poster} alt={myMovie.Title} />
-				<h2 className='text-2xl font-bold'>{myMovie.Year}</h2>
+			<MovieDisplayContainer className='self-start'>
+				<MovieDisplayBG>
+					<Title>{myMovie.Title}</Title>
+					<h2>{myMovie.Genre}</h2>
+					<hr className='mb-4' />
+					<Image src={myMovie.Poster} alt={myMovie.Title} />
+					<h2 className='text-2xl font-bold'>{myMovie.Year}</h2>
+				</MovieDisplayBG>
+				
+				<MovieTitleBG>
+					<span>{myMovie.Title}</span>
+					<span className='self-center text-[14rem]'>{myMovie.Title}</span>
+					<span className='self-end'>{myMovie.Title}</span>
+				</MovieTitleBG>
+
 			</MovieDisplayContainer>
 		);
 	};

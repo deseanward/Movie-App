@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import tw from 'tailwind-styled-components';
 
 export const MovieFormContainer = tw.div`
@@ -6,6 +6,8 @@ export const MovieFormContainer = tw.div`
 	p-4
 	rounded-md
 	text-gray-700
+	bg-gray-400
+	relative z-10
 `;
 
 export const Form = tw.form`
