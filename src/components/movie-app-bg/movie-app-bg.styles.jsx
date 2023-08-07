@@ -1,7 +1,6 @@
 import tw, { styled } from 'twin.macro';
 
 export const MovieBG = styled.section`
-	scale: ${props => (props.animate === true ? 1 : 0.1)};
 	${tw`
         h-screen w-[50vw]
         fixed
@@ -9,10 +8,8 @@ export const MovieBG = styled.section`
         text-gray-700 font-black
         opacity-[0.2]
        
-    //    animate-jump-in animate-duration-1000 animate-delay-100
-    `}
-
-	transition: scale 1s ease-in-out;
+        animate-jump-in animate-duration-1000
+        `}
 `;
 
 export const Title = tw.h1`

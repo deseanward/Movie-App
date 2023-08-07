@@ -10,9 +10,10 @@ import {
 } from './movie-display.styles';
 
 const MovieDisplay = () => {
-	const { movie } = useContext(MovieContext);
+	const { movie, isLoading, setIsLoading } = useContext(MovieContext);
 	const [myMovie, setMyMovie] = useState(null);
 
+	// Loads the movie from search input
 	useEffect(() => {
 		try {
 			// If the movie request is not null and doesn't return an error, set the movie to display
@@ -24,27 +25,37 @@ const MovieDisplay = () => {
 		}
 	}, [movie]);
 
+	// Sets isLoading to false and handles the animation of the page
+	useEffect(() => {
+		try {
+			myMovie ? setIsLoading(false) : console.log('No movie returned');
+		} catch (error) {
+			console.log('An error occurred with the movie title. ', error);
+		}
+	}, [myMovie]);
+
 	// If the movie has loaded
 	const loaded = () => {
 		return (
-			<MovieDisplayContainer className='self-start'>
+			<MovieDisplayContainer>
 				<MovieDisplayBG>
 					<Title>{myMovie.Title}</Title>
 					<h2>{myMovie.Genre}</h2>
 					<hr className='mb-4' />
-					<Image
-						src={myMovie.Poster}
-						alt={myMovie.Title}
-					/>
+					<Image src={myMovie.Poster} alt={myMovie.Title} />
 					<h2 className='text-2xl font-bold'>{myMovie.Year}</h2>
 				</MovieDisplayBG>
 
 				<MovieTitleBG>
-					<span>{myMovie.Title}</span>
+					<span className='animate-fade-right animate-delay-500 animate-ease-in-out'>
+						{myMovie.Title}
+					</span>
 					<span className='self-center text-[14rem]'>
 						{myMovie.Title}
 					</span>
-					<span className='self-end'>{myMovie.Title}</span>
+					<span className='self-end animate-fade-left animate-delay-500 animate-ease-in-out'>
+						{myMovie.Title}
+					</span>
 				</MovieTitleBG>
 			</MovieDisplayContainer>
 		);
@@ -55,7 +66,7 @@ const MovieDisplay = () => {
 		return <Title>No Movie to Display</Title>;
 	};
 
-	return myMovie ? loaded() : loading();
+	return myMovie && isLoading === false ? loaded() : loading();
 };
 
 export default MovieDisplay;

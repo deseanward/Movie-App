@@ -4,7 +4,7 @@ import tw, { styled } from 'twin.macro';
 export const MovieDisplayContainer = tw.div`
     flex justify-center
     w-screen
-`;
+    `;
 
 export const MovieDisplayBG = styled.div`
 	${tw` 
@@ -15,6 +15,7 @@ export const MovieDisplayBG = styled.div`
     text-white
     shadow-lg shadow-gray-700
     relative z-10
+    animate-fade animate-delay-1000 animate-ease-in-out
     `}
 `;
 
@@ -23,6 +24,7 @@ export const MovieTitleBG = tw.section`
     absolute top-0
     flex flex-col
     text-[8rem] text-gray-700 font-black
+
 `;
 
 export const Title = tw.h1`
@@ -31,5 +33,5 @@ export const Title = tw.h1`
 `;
 
 export const Image = tw.img`
-    shadow shadow-gray-500 mb-2
+    shadow-md shadow-gray-500 mb-2
 `;
